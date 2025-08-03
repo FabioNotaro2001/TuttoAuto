@@ -1,0 +1,1545 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TUTTOAUTOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="alimentazioni">
+          <Key>
+            <PropertyRef Name="Nome" />
+          </Key>
+          <Property Name="Nome" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="annunci_vendita">
+          <Key>
+            <PropertyRef Name="TargaAuto" />
+            <PropertyRef Name="MailVenditore" />
+            <PropertyRef Name="DataAnnuncio" />
+          </Key>
+          <Property Name="TargaAuto" Type="nchar" MaxLength="7" Nullable="false" />
+          <Property Name="MailVenditore" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="DataAnnuncio" Type="date" Nullable="false" />
+          <Property Name="DataVendita" Type="date" />
+          <Property Name="Prezzo" Type="float" Nullable="false" />
+          <Property Name="Regione" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MailAcquirente" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="assicurazioni">
+          <Key>
+            <PropertyRef Name="PartitaIVA" />
+          </Key>
+          <Property Name="Nome" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="PartitaIVA" Type="nchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="auto">
+          <Key>
+            <PropertyRef Name="Targa" />
+          </Key>
+          <Property Name="Targa" Type="nchar" MaxLength="7" Nullable="false" />
+          <Property Name="AnnoImmatricolazione" Type="int" Nullable="false" />
+          <Property Name="Kilometraggio" Type="decimal" Precision="10" Scale="1" Nullable="false" />
+          <Property Name="Potenza" Type="int" Nullable="false" />
+          <Property Name="Colore" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MailProprietario" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Alimentazione" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CasaProduttrice" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NomeModello" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="banche">
+          <Key>
+            <PropertyRef Name="Nome" />
+          </Key>
+          <Property Name="Nome" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="Nazione" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="case_produttrici">
+          <Key>
+            <PropertyRef Name="Nome" />
+          </Key>
+          <Property Name="Nome" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AnnoFondazione" Type="int" Nullable="false" />
+          <Property Name="NomeFondatore" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="LinkSitoWeb" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descrizione" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Nazione" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="contratti_assicurativi">
+          <Key>
+            <PropertyRef Name="TargaAuto" />
+            <PropertyRef Name="DataInizio" />
+          </Key>
+          <Property Name="TargaAuto" Type="nchar" MaxLength="7" Nullable="false" />
+          <Property Name="DataInizio" Type="date" Nullable="false" />
+          <Property Name="DataFine" Type="date" Nullable="false" />
+          <Property Name="PercentualeSconto" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="MailUtente" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CasaProduttrice" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NomeModello" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PartitaIVAAssicurazione" Type="nchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="garanzie">
+          <Key>
+            <PropertyRef Name="TipoServizio" />
+            <PropertyRef Name="CasaProduttrice" />
+            <PropertyRef Name="NomeModello" />
+            <PropertyRef Name="PartitaIVAAssicurazione" />
+          </Key>
+          <Property Name="TipoServizio" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="CasaProduttrice" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NomeModello" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PartitaIVAAssicurazione" Type="nchar" MaxLength="11" Nullable="false" />
+        </EntityType>
+        <EntityType Name="messaggi">
+          <Key>
+            <PropertyRef Name="Codice" />
+          </Key>
+          <Property Name="MailRicevente" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="MailMittente" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Codice" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Data" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="Testo" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="modelli">
+          <Key>
+            <PropertyRef Name="CasaProduttrice" />
+            <PropertyRef Name="Nome" />
+          </Key>
+          <Property Name="CasaProduttrice" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nome" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="AnnoPresentazione" Type="int" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Lunghezza" Type="int" Nullable="false" />
+          <Property Name="Larghezza" Type="int" Nullable="false" />
+          <Property Name="Peso" Type="int" Nullable="false" />
+          <Property Name="Altezza" Type="int" Nullable="false" />
+          <Property Name="VotoEuroNCAP" Type="int" Nullable="false" />
+          <Property Name="NazioneAssemblaggio" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="multe">
+          <Key>
+            <PropertyRef Name="NumeroVerbale" />
+          </Key>
+          <Property Name="NumeroVerbale" Type="int" Nullable="false" />
+          <Property Name="DataInfrazione" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="ViaInfrazione" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CittàInfrazione" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Costo" Type="float" Nullable="false" />
+          <Property Name="DataScadenza" Type="date" Nullable="false" />
+          <Property Name="Descrizione" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MailUtente" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="TargaAuto" Type="nchar" MaxLength="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="nazioni">
+          <Key>
+            <PropertyRef Name="Nome" />
+          </Key>
+          <Property Name="Nome" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="offerte_assicurative">
+          <Key>
+            <PropertyRef Name="CasaProduttrice" />
+            <PropertyRef Name="NomeModello" />
+            <PropertyRef Name="PartitaIVAAssicurazione" />
+          </Key>
+          <Property Name="CasaProduttrice" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="NomeModello" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="PartitaIVAAssicurazione" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="Premio" Type="float" Nullable="false" />
+          <Property Name="DataScadenza" Type="date" />
+          <Property Name="Massimale" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="proposte_finanziamento">
+          <Key>
+            <PropertyRef Name="Codice" />
+          </Key>
+          <Property Name="Codice" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroRate" Type="int" Nullable="false" />
+          <Property Name="ImportoSingolaRata" Type="float" Nullable="false" />
+          <Property Name="Interessi" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="Banca" Type="nvarchar" MaxLength="40" Nullable="false" />
+        </EntityType>
+        <EntityType Name="regioni">
+          <Key>
+            <PropertyRef Name="Nome" />
+          </Key>
+          <Property Name="Nome" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sconti">
+          <Key>
+            <PropertyRef Name="PartitaIVAAssicurazione" />
+            <PropertyRef Name="ContrattiPrecedenti" />
+          </Key>
+          <Property Name="PartitaIVAAssicurazione" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="ContrattiPrecedenti" Type="int" Nullable="false" />
+          <Property Name="PercentualeSconto" Type="decimal" Precision="3" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="servizi">
+          <Key>
+            <PropertyRef Name="Tipo" />
+          </Key>
+          <Property Name="Tipo" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Descrizione" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="stipulazioni">
+          <Key>
+            <PropertyRef Name="PartitaIVAAssicurazione" />
+            <PropertyRef Name="MailUtente" />
+          </Key>
+          <Property Name="PartitaIVAAssicurazione" Type="nchar" MaxLength="11" Nullable="false" />
+          <Property Name="MailUtente" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="NumeroContrattiTotali" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="utenti">
+          <Key>
+            <PropertyRef Name="IndirizzoMail" />
+          </Key>
+          <Property Name="Nominativo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="IndirizzoMail" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="PasswordAccesso" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Tipo" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="CodiceFiscale" Type="nchar" MaxLength="16" />
+          <Property Name="PartitaIVA" Type="nchar" MaxLength="11" />
+        </EntityType>
+        <Association Name="annunci_vendita$FKACQUIRENTE">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="0..1" />
+          <End Role="annunci_vendita" Type="Self.annunci_vendita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="annunci_vendita">
+              <PropertyRef Name="MailAcquirente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="annunci_vendita$FKLUOGO">
+          <End Role="regioni" Type="Self.regioni" Multiplicity="1" />
+          <End Role="annunci_vendita" Type="Self.annunci_vendita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="regioni">
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="annunci_vendita">
+              <PropertyRef Name="Regione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="annunci_vendita$FKRIFERIMENTO">
+          <End Role="auto" Type="Self.auto" Multiplicity="1" />
+          <End Role="annunci_vendita" Type="Self.annunci_vendita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auto">
+              <PropertyRef Name="Targa" />
+            </Principal>
+            <Dependent Role="annunci_vendita">
+              <PropertyRef Name="TargaAuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="annunci_vendita$FKVENDITORE">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="1" />
+          <End Role="annunci_vendita" Type="Self.annunci_vendita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="annunci_vendita">
+              <PropertyRef Name="MailVenditore" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="auto$FKPROPRIETA">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="1" />
+          <End Role="auto" Type="Self.auto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="auto">
+              <PropertyRef Name="MailProprietario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="auto$FKTIPO_MOTORIZZAZIONE">
+          <End Role="alimentazioni" Type="Self.alimentazioni" Multiplicity="1" />
+          <End Role="auto" Type="Self.auto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="alimentazioni">
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="auto">
+              <PropertyRef Name="Alimentazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="auto$FKTIPOLOGIA">
+          <End Role="modelli" Type="Self.modelli" Multiplicity="1" />
+          <End Role="auto" Type="Self.auto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modelli">
+              <PropertyRef Name="CasaProduttrice" />
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="auto">
+              <PropertyRef Name="CasaProduttrice" />
+              <PropertyRef Name="NomeModello" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="banche$FKNAZIONALITA">
+          <End Role="nazioni" Type="Self.nazioni" Multiplicity="1" />
+          <End Role="banche" Type="Self.banche" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nazioni">
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="banche">
+              <PropertyRef Name="Nazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="case_produttrici$FKFONDAZIONE">
+          <End Role="nazioni" Type="Self.nazioni" Multiplicity="1" />
+          <End Role="case_produttrici" Type="Self.case_produttrici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nazioni">
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="case_produttrici">
+              <PropertyRef Name="Nazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="contratti_assicurativi$FKCOPERTURA">
+          <End Role="auto" Type="Self.auto" Multiplicity="1" />
+          <End Role="contratti_assicurativi" Type="Self.contratti_assicurativi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auto">
+              <PropertyRef Name="Targa" />
+            </Principal>
+            <Dependent Role="contratti_assicurativi">
+              <PropertyRef Name="TargaAuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="contratti_assicurativi$FKFIRMA">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="1" />
+          <End Role="contratti_assicurativi" Type="Self.contratti_assicurativi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="contratti_assicurativi">
+              <PropertyRef Name="MailUtente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="contratti_assicurativi$FKSOTTOSCRIZIONE">
+          <End Role="offerte_assicurative" Type="Self.offerte_assicurative" Multiplicity="1" />
+          <End Role="contratti_assicurativi" Type="Self.contratti_assicurativi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="offerte_assicurative">
+              <PropertyRef Name="CasaProduttrice" />
+              <PropertyRef Name="NomeModello" />
+              <PropertyRef Name="PartitaIVAAssicurazione" />
+            </Principal>
+            <Dependent Role="contratti_assicurativi">
+              <PropertyRef Name="CasaProduttrice" />
+              <PropertyRef Name="NomeModello" />
+              <PropertyRef Name="PartitaIVAAssicurazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="garanzie$FKOffertaAssicurativa">
+          <End Role="offerte_assicurative" Type="Self.offerte_assicurative" Multiplicity="1" />
+          <End Role="garanzie" Type="Self.garanzie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="offerte_assicurative">
+              <PropertyRef Name="CasaProduttrice" />
+              <PropertyRef Name="NomeModello" />
+              <PropertyRef Name="PartitaIVAAssicurazione" />
+            </Principal>
+            <Dependent Role="garanzie">
+              <PropertyRef Name="CasaProduttrice" />
+              <PropertyRef Name="NomeModello" />
+              <PropertyRef Name="PartitaIVAAssicurazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="garanzie$FKServizio">
+          <End Role="servizi" Type="Self.servizi" Multiplicity="1" />
+          <End Role="garanzie" Type="Self.garanzie" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="servizi">
+              <PropertyRef Name="Tipo" />
+            </Principal>
+            <Dependent Role="garanzie">
+              <PropertyRef Name="TipoServizio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="messaggi$FKMITTENTE">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="1" />
+          <End Role="messaggi" Type="Self.messaggi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="messaggi">
+              <PropertyRef Name="MailMittente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="messaggi$FKRICEVENTE">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="1" />
+          <End Role="messaggi" Type="Self.messaggi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="messaggi">
+              <PropertyRef Name="MailRicevente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="modelli$FKASSEMBLAGGIO">
+          <End Role="nazioni" Type="Self.nazioni" Multiplicity="1" />
+          <End Role="modelli" Type="Self.modelli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nazioni">
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="modelli">
+              <PropertyRef Name="NazioneAssemblaggio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="modelli$FKREALIZZAZIONE">
+          <End Role="case_produttrici" Type="Self.case_produttrici" Multiplicity="1" />
+          <End Role="modelli" Type="Self.modelli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="case_produttrici">
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="modelli">
+              <PropertyRef Name="CasaProduttrice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="multe$FKRECAPITO">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="1" />
+          <End Role="multe" Type="Self.multe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="multe">
+              <PropertyRef Name="MailUtente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="multe$FKRICEZIONE">
+          <End Role="auto" Type="Self.auto" Multiplicity="1" />
+          <End Role="multe" Type="Self.multe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auto">
+              <PropertyRef Name="Targa" />
+            </Principal>
+            <Dependent Role="multe">
+              <PropertyRef Name="TargaAuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="offerte_assicurative$FKCALCOLO">
+          <End Role="modelli" Type="Self.modelli" Multiplicity="1" />
+          <End Role="offerte_assicurative" Type="Self.offerte_assicurative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modelli">
+              <PropertyRef Name="CasaProduttrice" />
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="offerte_assicurative">
+              <PropertyRef Name="CasaProduttrice" />
+              <PropertyRef Name="NomeModello" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="offerte_assicurative$FKPRESENTAZIONE">
+          <End Role="assicurazioni" Type="Self.assicurazioni" Multiplicity="1" />
+          <End Role="offerte_assicurative" Type="Self.offerte_assicurative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assicurazioni">
+              <PropertyRef Name="PartitaIVA" />
+            </Principal>
+            <Dependent Role="offerte_assicurative">
+              <PropertyRef Name="PartitaIVAAssicurazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="proposte_finanziamento$FKPROPOSTA">
+          <End Role="banche" Type="Self.banche" Multiplicity="1" />
+          <End Role="proposte_finanziamento" Type="Self.proposte_finanziamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="banche">
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="proposte_finanziamento">
+              <PropertyRef Name="Banca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="sconti$FKCONCESSIONE">
+          <End Role="assicurazioni" Type="Self.assicurazioni" Multiplicity="1" />
+          <End Role="sconti" Type="Self.sconti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assicurazioni">
+              <PropertyRef Name="PartitaIVA" />
+            </Principal>
+            <Dependent Role="sconti">
+              <PropertyRef Name="PartitaIVAAssicurazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="stipulazioni$FKAssicurazione">
+          <End Role="assicurazioni" Type="Self.assicurazioni" Multiplicity="1" />
+          <End Role="stipulazioni" Type="Self.stipulazioni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assicurazioni">
+              <PropertyRef Name="PartitaIVA" />
+            </Principal>
+            <Dependent Role="stipulazioni">
+              <PropertyRef Name="PartitaIVAAssicurazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="stipulazioni$FKUtente">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="1" />
+          <End Role="stipulazioni" Type="Self.stipulazioni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="stipulazioni">
+              <PropertyRef Name="MailUtente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TUTTOAUTOModelStoreContainer">
+          <EntitySet Name="alimentazioni" EntityType="Self.alimentazioni" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="annunci_vendita" EntityType="Self.annunci_vendita" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="assicurazioni" EntityType="Self.assicurazioni" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="auto" EntityType="Self.auto" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="banche" EntityType="Self.banche" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="case_produttrici" EntityType="Self.case_produttrici" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="contratti_assicurativi" EntityType="Self.contratti_assicurativi" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="garanzie" EntityType="Self.garanzie" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="messaggi" EntityType="Self.messaggi" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="modelli" EntityType="Self.modelli" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="multe" EntityType="Self.multe" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="nazioni" EntityType="Self.nazioni" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="offerte_assicurative" EntityType="Self.offerte_assicurative" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="proposte_finanziamento" EntityType="Self.proposte_finanziamento" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="regioni" EntityType="Self.regioni" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="sconti" EntityType="Self.sconti" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="servizi" EntityType="Self.servizi" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="stipulazioni" EntityType="Self.stipulazioni" Schema="tuttoauto" store:Type="Tables" />
+          <EntitySet Name="utenti" EntityType="Self.utenti" Schema="tuttoauto" store:Type="Tables" />
+          <AssociationSet Name="annunci_vendita$FKACQUIRENTE" Association="Self.annunci_vendita$FKACQUIRENTE">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="annunci_vendita" EntitySet="annunci_vendita" />
+          </AssociationSet>
+          <AssociationSet Name="annunci_vendita$FKLUOGO" Association="Self.annunci_vendita$FKLUOGO">
+            <End Role="regioni" EntitySet="regioni" />
+            <End Role="annunci_vendita" EntitySet="annunci_vendita" />
+          </AssociationSet>
+          <AssociationSet Name="annunci_vendita$FKRIFERIMENTO" Association="Self.annunci_vendita$FKRIFERIMENTO">
+            <End Role="auto" EntitySet="auto" />
+            <End Role="annunci_vendita" EntitySet="annunci_vendita" />
+          </AssociationSet>
+          <AssociationSet Name="annunci_vendita$FKVENDITORE" Association="Self.annunci_vendita$FKVENDITORE">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="annunci_vendita" EntitySet="annunci_vendita" />
+          </AssociationSet>
+          <AssociationSet Name="auto$FKPROPRIETA" Association="Self.auto$FKPROPRIETA">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="auto" EntitySet="auto" />
+          </AssociationSet>
+          <AssociationSet Name="auto$FKTIPO_MOTORIZZAZIONE" Association="Self.auto$FKTIPO_MOTORIZZAZIONE">
+            <End Role="alimentazioni" EntitySet="alimentazioni" />
+            <End Role="auto" EntitySet="auto" />
+          </AssociationSet>
+          <AssociationSet Name="auto$FKTIPOLOGIA" Association="Self.auto$FKTIPOLOGIA">
+            <End Role="modelli" EntitySet="modelli" />
+            <End Role="auto" EntitySet="auto" />
+          </AssociationSet>
+          <AssociationSet Name="banche$FKNAZIONALITA" Association="Self.banche$FKNAZIONALITA">
+            <End Role="nazioni" EntitySet="nazioni" />
+            <End Role="banche" EntitySet="banche" />
+          </AssociationSet>
+          <AssociationSet Name="case_produttrici$FKFONDAZIONE" Association="Self.case_produttrici$FKFONDAZIONE">
+            <End Role="nazioni" EntitySet="nazioni" />
+            <End Role="case_produttrici" EntitySet="case_produttrici" />
+          </AssociationSet>
+          <AssociationSet Name="contratti_assicurativi$FKCOPERTURA" Association="Self.contratti_assicurativi$FKCOPERTURA">
+            <End Role="auto" EntitySet="auto" />
+            <End Role="contratti_assicurativi" EntitySet="contratti_assicurativi" />
+          </AssociationSet>
+          <AssociationSet Name="contratti_assicurativi$FKFIRMA" Association="Self.contratti_assicurativi$FKFIRMA">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="contratti_assicurativi" EntitySet="contratti_assicurativi" />
+          </AssociationSet>
+          <AssociationSet Name="contratti_assicurativi$FKSOTTOSCRIZIONE" Association="Self.contratti_assicurativi$FKSOTTOSCRIZIONE">
+            <End Role="offerte_assicurative" EntitySet="offerte_assicurative" />
+            <End Role="contratti_assicurativi" EntitySet="contratti_assicurativi" />
+          </AssociationSet>
+          <AssociationSet Name="garanzie$FKOffertaAssicurativa" Association="Self.garanzie$FKOffertaAssicurativa">
+            <End Role="offerte_assicurative" EntitySet="offerte_assicurative" />
+            <End Role="garanzie" EntitySet="garanzie" />
+          </AssociationSet>
+          <AssociationSet Name="garanzie$FKServizio" Association="Self.garanzie$FKServizio">
+            <End Role="servizi" EntitySet="servizi" />
+            <End Role="garanzie" EntitySet="garanzie" />
+          </AssociationSet>
+          <AssociationSet Name="messaggi$FKMITTENTE" Association="Self.messaggi$FKMITTENTE">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="messaggi" EntitySet="messaggi" />
+          </AssociationSet>
+          <AssociationSet Name="messaggi$FKRICEVENTE" Association="Self.messaggi$FKRICEVENTE">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="messaggi" EntitySet="messaggi" />
+          </AssociationSet>
+          <AssociationSet Name="modelli$FKASSEMBLAGGIO" Association="Self.modelli$FKASSEMBLAGGIO">
+            <End Role="nazioni" EntitySet="nazioni" />
+            <End Role="modelli" EntitySet="modelli" />
+          </AssociationSet>
+          <AssociationSet Name="modelli$FKREALIZZAZIONE" Association="Self.modelli$FKREALIZZAZIONE">
+            <End Role="case_produttrici" EntitySet="case_produttrici" />
+            <End Role="modelli" EntitySet="modelli" />
+          </AssociationSet>
+          <AssociationSet Name="multe$FKRECAPITO" Association="Self.multe$FKRECAPITO">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="multe" EntitySet="multe" />
+          </AssociationSet>
+          <AssociationSet Name="multe$FKRICEZIONE" Association="Self.multe$FKRICEZIONE">
+            <End Role="auto" EntitySet="auto" />
+            <End Role="multe" EntitySet="multe" />
+          </AssociationSet>
+          <AssociationSet Name="offerte_assicurative$FKCALCOLO" Association="Self.offerte_assicurative$FKCALCOLO">
+            <End Role="modelli" EntitySet="modelli" />
+            <End Role="offerte_assicurative" EntitySet="offerte_assicurative" />
+          </AssociationSet>
+          <AssociationSet Name="offerte_assicurative$FKPRESENTAZIONE" Association="Self.offerte_assicurative$FKPRESENTAZIONE">
+            <End Role="assicurazioni" EntitySet="assicurazioni" />
+            <End Role="offerte_assicurative" EntitySet="offerte_assicurative" />
+          </AssociationSet>
+          <AssociationSet Name="proposte_finanziamento$FKPROPOSTA" Association="Self.proposte_finanziamento$FKPROPOSTA">
+            <End Role="banche" EntitySet="banche" />
+            <End Role="proposte_finanziamento" EntitySet="proposte_finanziamento" />
+          </AssociationSet>
+          <AssociationSet Name="sconti$FKCONCESSIONE" Association="Self.sconti$FKCONCESSIONE">
+            <End Role="assicurazioni" EntitySet="assicurazioni" />
+            <End Role="sconti" EntitySet="sconti" />
+          </AssociationSet>
+          <AssociationSet Name="stipulazioni$FKAssicurazione" Association="Self.stipulazioni$FKAssicurazione">
+            <End Role="assicurazioni" EntitySet="assicurazioni" />
+            <End Role="stipulazioni" EntitySet="stipulazioni" />
+          </AssociationSet>
+          <AssociationSet Name="stipulazioni$FKUtente" Association="Self.stipulazioni$FKUtente">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="stipulazioni" EntitySet="stipulazioni" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TUTTOAUTOModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="alimentazioni">
+          <Key>
+            <PropertyRef Name="Nome" />
+          </Key>
+          <Property Name="Nome" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="auto" Relationship="Self.auto_FKTIPO_MOTORIZZAZIONE" FromRole="alimentazioni" ToRole="auto" />
+        </EntityType>
+        <EntityType Name="annunci_vendita">
+          <Key>
+            <PropertyRef Name="TargaAuto" />
+            <PropertyRef Name="MailVenditore" />
+            <PropertyRef Name="DataAnnuncio" />
+          </Key>
+          <Property Name="TargaAuto" Type="String" MaxLength="7" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="MailVenditore" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DataAnnuncio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataVendita" Type="DateTime" Precision="0" />
+          <Property Name="Prezzo" Type="Double" Nullable="false" />
+          <Property Name="Regione" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailAcquirente" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="utenti" Relationship="Self.annunci_vendita_FKACQUIRENTE" FromRole="annunci_vendita" ToRole="utenti" />
+          <NavigationProperty Name="regioni" Relationship="Self.annunci_vendita_FKLUOGO" FromRole="annunci_vendita" ToRole="regioni" />
+          <NavigationProperty Name="auto" Relationship="Self.annunci_vendita_FKRIFERIMENTO" FromRole="annunci_vendita" ToRole="auto" />
+          <NavigationProperty Name="utenti1" Relationship="Self.annunci_vendita_FKVENDITORE" FromRole="annunci_vendita" ToRole="utenti" />
+        </EntityType>
+        <EntityType Name="assicurazioni">
+          <Key>
+            <PropertyRef Name="PartitaIVA" />
+          </Key>
+          <Property Name="Nome" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PartitaIVA" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="offerte_assicurative" Relationship="Self.offerte_assicurative_FKPRESENTAZIONE" FromRole="assicurazioni" ToRole="offerte_assicurative" />
+          <NavigationProperty Name="sconti" Relationship="Self.sconti_FKCONCESSIONE" FromRole="assicurazioni" ToRole="sconti" />
+          <NavigationProperty Name="stipulazioni" Relationship="Self.stipulazioni_FKAssicurazione" FromRole="assicurazioni" ToRole="stipulazioni" />
+        </EntityType>
+        <EntityType Name="auto">
+          <Key>
+            <PropertyRef Name="Targa" />
+          </Key>
+          <Property Name="Targa" Type="String" MaxLength="7" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="AnnoImmatricolazione" Type="Int32" Nullable="false" />
+          <Property Name="Kilometraggio" Type="Decimal" Precision="10" Scale="1" Nullable="false" />
+          <Property Name="Potenza" Type="Int32" Nullable="false" />
+          <Property Name="Colore" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailProprietario" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Alimentazione" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CasaProduttrice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NomeModello" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="alimentazioni" Relationship="Self.auto_FKTIPO_MOTORIZZAZIONE" FromRole="auto" ToRole="alimentazioni" />
+          <NavigationProperty Name="annunci_vendita" Relationship="Self.annunci_vendita_FKRIFERIMENTO" FromRole="auto" ToRole="annunci_vendita" />
+          <NavigationProperty Name="utenti" Relationship="Self.auto_FKPROPRIETA" FromRole="auto" ToRole="utenti" />
+          <NavigationProperty Name="modelli" Relationship="Self.auto_FKTIPOLOGIA" FromRole="auto" ToRole="modelli" />
+          <NavigationProperty Name="contratti_assicurativi" Relationship="Self.contratti_assicurativi_FKCOPERTURA" FromRole="auto" ToRole="contratti_assicurativi" />
+          <NavigationProperty Name="multe" Relationship="Self.multe_FKRICEZIONE" FromRole="auto" ToRole="multe" />
+        </EntityType>
+        <EntityType Name="banche">
+          <Key>
+            <PropertyRef Name="Nome" />
+          </Key>
+          <Property Name="Nome" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nazione" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="nazioni" Relationship="Self.banche_FKNAZIONALITA" FromRole="banche" ToRole="nazioni" />
+          <NavigationProperty Name="proposte_finanziamento" Relationship="Self.proposte_finanziamento_FKPROPOSTA" FromRole="banche" ToRole="proposte_finanziamento" />
+        </EntityType>
+        <EntityType Name="case_produttrici">
+          <Key>
+            <PropertyRef Name="Nome" />
+          </Key>
+          <Property Name="Nome" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnnoFondazione" Type="Int32" Nullable="false" />
+          <Property Name="NomeFondatore" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LinkSitoWeb" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descrizione" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nazione" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="nazioni" Relationship="Self.case_produttrici_FKFONDAZIONE" FromRole="case_produttrici" ToRole="nazioni" />
+          <NavigationProperty Name="modelli" Relationship="Self.modelli_FKREALIZZAZIONE" FromRole="case_produttrici" ToRole="modelli" />
+        </EntityType>
+        <EntityType Name="contratti_assicurativi">
+          <Key>
+            <PropertyRef Name="TargaAuto" />
+            <PropertyRef Name="DataInizio" />
+          </Key>
+          <Property Name="TargaAuto" Type="String" MaxLength="7" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="DataInizio" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DataFine" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PercentualeSconto" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="MailUtente" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CasaProduttrice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NomeModello" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PartitaIVAAssicurazione" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="auto" Relationship="Self.contratti_assicurativi_FKCOPERTURA" FromRole="contratti_assicurativi" ToRole="auto" />
+          <NavigationProperty Name="utenti" Relationship="Self.contratti_assicurativi_FKFIRMA" FromRole="contratti_assicurativi" ToRole="utenti" />
+          <NavigationProperty Name="offerte_assicurative" Relationship="Self.contratti_assicurativi_FKSOTTOSCRIZIONE" FromRole="contratti_assicurativi" ToRole="offerte_assicurative" />
+        </EntityType>
+        <EntityType Name="messaggi">
+          <Key>
+            <PropertyRef Name="Codice" />
+          </Key>
+          <Property Name="MailRicevente" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailMittente" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Codice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Testo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="utenti" Relationship="Self.messaggi_FKMITTENTE" FromRole="messaggi" ToRole="utenti" />
+          <NavigationProperty Name="utenti1" Relationship="Self.messaggi_FKRICEVENTE" FromRole="messaggi" ToRole="utenti" />
+        </EntityType>
+        <EntityType Name="modelli">
+          <Key>
+            <PropertyRef Name="CasaProduttrice" />
+            <PropertyRef Name="Nome" />
+          </Key>
+          <Property Name="CasaProduttrice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnnoPresentazione" Type="Int32" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Lunghezza" Type="Int32" Nullable="false" />
+          <Property Name="Larghezza" Type="Int32" Nullable="false" />
+          <Property Name="Peso" Type="Int32" Nullable="false" />
+          <Property Name="Altezza" Type="Int32" Nullable="false" />
+          <Property Name="VotoEuroNCAP" Type="Int32" Nullable="false" />
+          <Property Name="NazioneAssemblaggio" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="auto" Relationship="Self.auto_FKTIPOLOGIA" FromRole="modelli" ToRole="auto" />
+          <NavigationProperty Name="case_produttrici" Relationship="Self.modelli_FKREALIZZAZIONE" FromRole="modelli" ToRole="case_produttrici" />
+          <NavigationProperty Name="nazioni" Relationship="Self.modelli_FKASSEMBLAGGIO" FromRole="modelli" ToRole="nazioni" />
+          <NavigationProperty Name="offerte_assicurative" Relationship="Self.offerte_assicurative_FKCALCOLO" FromRole="modelli" ToRole="offerte_assicurative" />
+        </EntityType>
+        <EntityType Name="multe">
+          <Key>
+            <PropertyRef Name="NumeroVerbale" />
+          </Key>
+          <Property Name="NumeroVerbale" Type="Int32" Nullable="false" />
+          <Property Name="DataInfrazione" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ViaInfrazione" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CittàInfrazione" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Costo" Type="Double" Nullable="false" />
+          <Property Name="DataScadenza" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Descrizione" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MailUtente" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TargaAuto" Type="String" MaxLength="7" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="auto" Relationship="Self.multe_FKRICEZIONE" FromRole="multe" ToRole="auto" />
+          <NavigationProperty Name="utenti" Relationship="Self.multe_FKRECAPITO" FromRole="multe" ToRole="utenti" />
+        </EntityType>
+        <EntityType Name="nazioni">
+          <Key>
+            <PropertyRef Name="Nome" />
+          </Key>
+          <Property Name="Nome" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="banche" Relationship="Self.banche_FKNAZIONALITA" FromRole="nazioni" ToRole="banche" />
+          <NavigationProperty Name="case_produttrici" Relationship="Self.case_produttrici_FKFONDAZIONE" FromRole="nazioni" ToRole="case_produttrici" />
+          <NavigationProperty Name="modelli" Relationship="Self.modelli_FKASSEMBLAGGIO" FromRole="nazioni" ToRole="modelli" />
+        </EntityType>
+        <EntityType Name="offerte_assicurative">
+          <Key>
+            <PropertyRef Name="CasaProduttrice" />
+            <PropertyRef Name="NomeModello" />
+            <PropertyRef Name="PartitaIVAAssicurazione" />
+          </Key>
+          <Property Name="CasaProduttrice" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NomeModello" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PartitaIVAAssicurazione" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Premio" Type="Double" Nullable="false" />
+          <Property Name="DataScadenza" Type="DateTime" Precision="0" />
+          <Property Name="Massimale" Type="Double" Nullable="false" />
+          <NavigationProperty Name="assicurazioni" Relationship="Self.offerte_assicurative_FKPRESENTAZIONE" FromRole="offerte_assicurative" ToRole="assicurazioni" />
+          <NavigationProperty Name="contratti_assicurativi" Relationship="Self.contratti_assicurativi_FKSOTTOSCRIZIONE" FromRole="offerte_assicurative" ToRole="contratti_assicurativi" />
+          <NavigationProperty Name="modelli" Relationship="Self.offerte_assicurative_FKCALCOLO" FromRole="offerte_assicurative" ToRole="modelli" />
+          <NavigationProperty Name="servizi" Relationship="Self.garanzie" FromRole="offerte_assicurative" ToRole="servizi" />
+        </EntityType>
+        <EntityType Name="proposte_finanziamento">
+          <Key>
+            <PropertyRef Name="Codice" />
+          </Key>
+          <Property Name="Codice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroRate" Type="Int32" Nullable="false" />
+          <Property Name="ImportoSingolaRata" Type="Double" Nullable="false" />
+          <Property Name="Interessi" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <Property Name="Banca" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="banche" Relationship="Self.proposte_finanziamento_FKPROPOSTA" FromRole="proposte_finanziamento" ToRole="banche" />
+        </EntityType>
+        <EntityType Name="regioni">
+          <Key>
+            <PropertyRef Name="Nome" />
+          </Key>
+          <Property Name="Nome" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="annunci_vendita" Relationship="Self.annunci_vendita_FKLUOGO" FromRole="regioni" ToRole="annunci_vendita" />
+        </EntityType>
+        <EntityType Name="sconti">
+          <Key>
+            <PropertyRef Name="PartitaIVAAssicurazione" />
+            <PropertyRef Name="ContrattiPrecedenti" />
+          </Key>
+          <Property Name="PartitaIVAAssicurazione" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="ContrattiPrecedenti" Type="Int32" Nullable="false" />
+          <Property Name="PercentualeSconto" Type="Decimal" Precision="3" Scale="2" Nullable="false" />
+          <NavigationProperty Name="assicurazioni" Relationship="Self.sconti_FKCONCESSIONE" FromRole="sconti" ToRole="assicurazioni" />
+        </EntityType>
+        <EntityType Name="servizi">
+          <Key>
+            <PropertyRef Name="Tipo" />
+          </Key>
+          <Property Name="Tipo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descrizione" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="offerte_assicurative" Relationship="Self.garanzie" FromRole="servizi" ToRole="offerte_assicurative" />
+        </EntityType>
+        <EntityType Name="stipulazioni">
+          <Key>
+            <PropertyRef Name="PartitaIVAAssicurazione" />
+            <PropertyRef Name="MailUtente" />
+          </Key>
+          <Property Name="PartitaIVAAssicurazione" Type="String" MaxLength="11" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="MailUtente" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumeroContrattiTotali" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="assicurazioni" Relationship="Self.stipulazioni_FKAssicurazione" FromRole="stipulazioni" ToRole="assicurazioni" />
+          <NavigationProperty Name="utenti" Relationship="Self.stipulazioni_FKUtente" FromRole="stipulazioni" ToRole="utenti" />
+        </EntityType>
+        <EntityType Name="utenti">
+          <Key>
+            <PropertyRef Name="IndirizzoMail" />
+          </Key>
+          <Property Name="Nominativo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IndirizzoMail" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordAccesso" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Tipo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CodiceFiscale" Type="String" MaxLength="16" FixedLength="true" Unicode="true" />
+          <Property Name="PartitaIVA" Type="String" MaxLength="11" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="annunci_vendita" Relationship="Self.annunci_vendita_FKACQUIRENTE" FromRole="utenti" ToRole="annunci_vendita" />
+          <NavigationProperty Name="annunci_vendita1" Relationship="Self.annunci_vendita_FKVENDITORE" FromRole="utenti" ToRole="annunci_vendita" />
+          <NavigationProperty Name="auto" Relationship="Self.auto_FKPROPRIETA" FromRole="utenti" ToRole="auto" />
+          <NavigationProperty Name="contratti_assicurativi" Relationship="Self.contratti_assicurativi_FKFIRMA" FromRole="utenti" ToRole="contratti_assicurativi" />
+          <NavigationProperty Name="messaggi" Relationship="Self.messaggi_FKMITTENTE" FromRole="utenti" ToRole="messaggi" />
+          <NavigationProperty Name="messaggi1" Relationship="Self.messaggi_FKRICEVENTE" FromRole="utenti" ToRole="messaggi" />
+          <NavigationProperty Name="multe" Relationship="Self.multe_FKRECAPITO" FromRole="utenti" ToRole="multe" />
+          <NavigationProperty Name="stipulazioni" Relationship="Self.stipulazioni_FKUtente" FromRole="utenti" ToRole="stipulazioni" />
+        </EntityType>
+        <Association Name="auto_FKTIPO_MOTORIZZAZIONE">
+          <End Role="alimentazioni" Type="Self.alimentazioni" Multiplicity="1" />
+          <End Role="auto" Type="Self.auto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="alimentazioni">
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="auto">
+              <PropertyRef Name="Alimentazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="annunci_vendita_FKACQUIRENTE">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="0..1" />
+          <End Role="annunci_vendita" Type="Self.annunci_vendita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="annunci_vendita">
+              <PropertyRef Name="MailAcquirente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="annunci_vendita_FKLUOGO">
+          <End Role="regioni" Type="Self.regioni" Multiplicity="1" />
+          <End Role="annunci_vendita" Type="Self.annunci_vendita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="regioni">
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="annunci_vendita">
+              <PropertyRef Name="Regione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="annunci_vendita_FKRIFERIMENTO">
+          <End Role="auto" Type="Self.auto" Multiplicity="1" />
+          <End Role="annunci_vendita" Type="Self.annunci_vendita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auto">
+              <PropertyRef Name="Targa" />
+            </Principal>
+            <Dependent Role="annunci_vendita">
+              <PropertyRef Name="TargaAuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="annunci_vendita_FKVENDITORE">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="1" />
+          <End Role="annunci_vendita" Type="Self.annunci_vendita" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="annunci_vendita">
+              <PropertyRef Name="MailVenditore" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="offerte_assicurative_FKPRESENTAZIONE">
+          <End Role="assicurazioni" Type="Self.assicurazioni" Multiplicity="1" />
+          <End Role="offerte_assicurative" Type="Self.offerte_assicurative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assicurazioni">
+              <PropertyRef Name="PartitaIVA" />
+            </Principal>
+            <Dependent Role="offerte_assicurative">
+              <PropertyRef Name="PartitaIVAAssicurazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="sconti_FKCONCESSIONE">
+          <End Role="assicurazioni" Type="Self.assicurazioni" Multiplicity="1" />
+          <End Role="sconti" Type="Self.sconti" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assicurazioni">
+              <PropertyRef Name="PartitaIVA" />
+            </Principal>
+            <Dependent Role="sconti">
+              <PropertyRef Name="PartitaIVAAssicurazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="stipulazioni_FKAssicurazione">
+          <End Role="assicurazioni" Type="Self.assicurazioni" Multiplicity="1" />
+          <End Role="stipulazioni" Type="Self.stipulazioni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="assicurazioni">
+              <PropertyRef Name="PartitaIVA" />
+            </Principal>
+            <Dependent Role="stipulazioni">
+              <PropertyRef Name="PartitaIVAAssicurazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="auto_FKPROPRIETA">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="1" />
+          <End Role="auto" Type="Self.auto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="auto">
+              <PropertyRef Name="MailProprietario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="auto_FKTIPOLOGIA">
+          <End Role="modelli" Type="Self.modelli" Multiplicity="1" />
+          <End Role="auto" Type="Self.auto" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modelli">
+              <PropertyRef Name="CasaProduttrice" />
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="auto">
+              <PropertyRef Name="CasaProduttrice" />
+              <PropertyRef Name="NomeModello" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="contratti_assicurativi_FKCOPERTURA">
+          <End Role="auto" Type="Self.auto" Multiplicity="1" />
+          <End Role="contratti_assicurativi" Type="Self.contratti_assicurativi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auto">
+              <PropertyRef Name="Targa" />
+            </Principal>
+            <Dependent Role="contratti_assicurativi">
+              <PropertyRef Name="TargaAuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="multe_FKRICEZIONE">
+          <End Role="auto" Type="Self.auto" Multiplicity="1" />
+          <End Role="multe" Type="Self.multe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="auto">
+              <PropertyRef Name="Targa" />
+            </Principal>
+            <Dependent Role="multe">
+              <PropertyRef Name="TargaAuto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="banche_FKNAZIONALITA">
+          <End Role="nazioni" Type="Self.nazioni" Multiplicity="1" />
+          <End Role="banche" Type="Self.banche" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nazioni">
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="banche">
+              <PropertyRef Name="Nazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="proposte_finanziamento_FKPROPOSTA">
+          <End Role="banche" Type="Self.banche" Multiplicity="1" />
+          <End Role="proposte_finanziamento" Type="Self.proposte_finanziamento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="banche">
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="proposte_finanziamento">
+              <PropertyRef Name="Banca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="case_produttrici_FKFONDAZIONE">
+          <End Role="nazioni" Type="Self.nazioni" Multiplicity="1" />
+          <End Role="case_produttrici" Type="Self.case_produttrici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nazioni">
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="case_produttrici">
+              <PropertyRef Name="Nazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="modelli_FKREALIZZAZIONE">
+          <End Role="case_produttrici" Type="Self.case_produttrici" Multiplicity="1" />
+          <End Role="modelli" Type="Self.modelli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="case_produttrici">
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="modelli">
+              <PropertyRef Name="CasaProduttrice" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="contratti_assicurativi_FKFIRMA">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="1" />
+          <End Role="contratti_assicurativi" Type="Self.contratti_assicurativi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="contratti_assicurativi">
+              <PropertyRef Name="MailUtente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="contratti_assicurativi_FKSOTTOSCRIZIONE">
+          <End Role="offerte_assicurative" Type="Self.offerte_assicurative" Multiplicity="1" />
+          <End Role="contratti_assicurativi" Type="Self.contratti_assicurativi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="offerte_assicurative">
+              <PropertyRef Name="CasaProduttrice" />
+              <PropertyRef Name="NomeModello" />
+              <PropertyRef Name="PartitaIVAAssicurazione" />
+            </Principal>
+            <Dependent Role="contratti_assicurativi">
+              <PropertyRef Name="CasaProduttrice" />
+              <PropertyRef Name="NomeModello" />
+              <PropertyRef Name="PartitaIVAAssicurazione" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="messaggi_FKMITTENTE">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="1" />
+          <End Role="messaggi" Type="Self.messaggi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="messaggi">
+              <PropertyRef Name="MailMittente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="messaggi_FKRICEVENTE">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="1" />
+          <End Role="messaggi" Type="Self.messaggi" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="messaggi">
+              <PropertyRef Name="MailRicevente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="modelli_FKASSEMBLAGGIO">
+          <End Role="nazioni" Type="Self.nazioni" Multiplicity="1" />
+          <End Role="modelli" Type="Self.modelli" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="nazioni">
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="modelli">
+              <PropertyRef Name="NazioneAssemblaggio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="offerte_assicurative_FKCALCOLO">
+          <End Role="modelli" Type="Self.modelli" Multiplicity="1" />
+          <End Role="offerte_assicurative" Type="Self.offerte_assicurative" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="modelli">
+              <PropertyRef Name="CasaProduttrice" />
+              <PropertyRef Name="Nome" />
+            </Principal>
+            <Dependent Role="offerte_assicurative">
+              <PropertyRef Name="CasaProduttrice" />
+              <PropertyRef Name="NomeModello" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="multe_FKRECAPITO">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="1" />
+          <End Role="multe" Type="Self.multe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="multe">
+              <PropertyRef Name="MailUtente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="stipulazioni_FKUtente">
+          <End Role="utenti" Type="Self.utenti" Multiplicity="1" />
+          <End Role="stipulazioni" Type="Self.stipulazioni" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="utenti">
+              <PropertyRef Name="IndirizzoMail" />
+            </Principal>
+            <Dependent Role="stipulazioni">
+              <PropertyRef Name="MailUtente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="garanzie">
+          <End Role="offerte_assicurative" Type="Self.offerte_assicurative" Multiplicity="*" />
+          <End Role="servizi" Type="Self.servizi" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="TUTTOAUTOEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="alimentazioni" EntityType="Self.alimentazioni" />
+          <EntitySet Name="annunci_vendita" EntityType="Self.annunci_vendita" />
+          <EntitySet Name="assicurazioni" EntityType="Self.assicurazioni" />
+          <EntitySet Name="auto" EntityType="Self.auto" />
+          <EntitySet Name="banche" EntityType="Self.banche" />
+          <EntitySet Name="case_produttrici" EntityType="Self.case_produttrici" />
+          <EntitySet Name="contratti_assicurativi" EntityType="Self.contratti_assicurativi" />
+          <EntitySet Name="messaggi" EntityType="Self.messaggi" />
+          <EntitySet Name="modelli" EntityType="Self.modelli" />
+          <EntitySet Name="multe" EntityType="Self.multe" />
+          <EntitySet Name="nazioni" EntityType="Self.nazioni" />
+          <EntitySet Name="offerte_assicurative" EntityType="Self.offerte_assicurative" />
+          <EntitySet Name="proposte_finanziamento" EntityType="Self.proposte_finanziamento" />
+          <EntitySet Name="regioni" EntityType="Self.regioni" />
+          <EntitySet Name="sconti" EntityType="Self.sconti" />
+          <EntitySet Name="servizi" EntityType="Self.servizi" />
+          <EntitySet Name="stipulazioni" EntityType="Self.stipulazioni" />
+          <EntitySet Name="utenti" EntityType="Self.utenti" />
+          <AssociationSet Name="auto_FKTIPO_MOTORIZZAZIONE" Association="Self.auto_FKTIPO_MOTORIZZAZIONE">
+            <End Role="alimentazioni" EntitySet="alimentazioni" />
+            <End Role="auto" EntitySet="auto" />
+          </AssociationSet>
+          <AssociationSet Name="annunci_vendita_FKACQUIRENTE" Association="Self.annunci_vendita_FKACQUIRENTE">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="annunci_vendita" EntitySet="annunci_vendita" />
+          </AssociationSet>
+          <AssociationSet Name="annunci_vendita_FKLUOGO" Association="Self.annunci_vendita_FKLUOGO">
+            <End Role="regioni" EntitySet="regioni" />
+            <End Role="annunci_vendita" EntitySet="annunci_vendita" />
+          </AssociationSet>
+          <AssociationSet Name="annunci_vendita_FKRIFERIMENTO" Association="Self.annunci_vendita_FKRIFERIMENTO">
+            <End Role="auto" EntitySet="auto" />
+            <End Role="annunci_vendita" EntitySet="annunci_vendita" />
+          </AssociationSet>
+          <AssociationSet Name="annunci_vendita_FKVENDITORE" Association="Self.annunci_vendita_FKVENDITORE">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="annunci_vendita" EntitySet="annunci_vendita" />
+          </AssociationSet>
+          <AssociationSet Name="offerte_assicurative_FKPRESENTAZIONE" Association="Self.offerte_assicurative_FKPRESENTAZIONE">
+            <End Role="assicurazioni" EntitySet="assicurazioni" />
+            <End Role="offerte_assicurative" EntitySet="offerte_assicurative" />
+          </AssociationSet>
+          <AssociationSet Name="sconti_FKCONCESSIONE" Association="Self.sconti_FKCONCESSIONE">
+            <End Role="assicurazioni" EntitySet="assicurazioni" />
+            <End Role="sconti" EntitySet="sconti" />
+          </AssociationSet>
+          <AssociationSet Name="stipulazioni_FKAssicurazione" Association="Self.stipulazioni_FKAssicurazione">
+            <End Role="assicurazioni" EntitySet="assicurazioni" />
+            <End Role="stipulazioni" EntitySet="stipulazioni" />
+          </AssociationSet>
+          <AssociationSet Name="auto_FKPROPRIETA" Association="Self.auto_FKPROPRIETA">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="auto" EntitySet="auto" />
+          </AssociationSet>
+          <AssociationSet Name="auto_FKTIPOLOGIA" Association="Self.auto_FKTIPOLOGIA">
+            <End Role="modelli" EntitySet="modelli" />
+            <End Role="auto" EntitySet="auto" />
+          </AssociationSet>
+          <AssociationSet Name="contratti_assicurativi_FKCOPERTURA" Association="Self.contratti_assicurativi_FKCOPERTURA">
+            <End Role="auto" EntitySet="auto" />
+            <End Role="contratti_assicurativi" EntitySet="contratti_assicurativi" />
+          </AssociationSet>
+          <AssociationSet Name="multe_FKRICEZIONE" Association="Self.multe_FKRICEZIONE">
+            <End Role="auto" EntitySet="auto" />
+            <End Role="multe" EntitySet="multe" />
+          </AssociationSet>
+          <AssociationSet Name="banche_FKNAZIONALITA" Association="Self.banche_FKNAZIONALITA">
+            <End Role="nazioni" EntitySet="nazioni" />
+            <End Role="banche" EntitySet="banche" />
+          </AssociationSet>
+          <AssociationSet Name="proposte_finanziamento_FKPROPOSTA" Association="Self.proposte_finanziamento_FKPROPOSTA">
+            <End Role="banche" EntitySet="banche" />
+            <End Role="proposte_finanziamento" EntitySet="proposte_finanziamento" />
+          </AssociationSet>
+          <AssociationSet Name="case_produttrici_FKFONDAZIONE" Association="Self.case_produttrici_FKFONDAZIONE">
+            <End Role="nazioni" EntitySet="nazioni" />
+            <End Role="case_produttrici" EntitySet="case_produttrici" />
+          </AssociationSet>
+          <AssociationSet Name="modelli_FKREALIZZAZIONE" Association="Self.modelli_FKREALIZZAZIONE">
+            <End Role="case_produttrici" EntitySet="case_produttrici" />
+            <End Role="modelli" EntitySet="modelli" />
+          </AssociationSet>
+          <AssociationSet Name="contratti_assicurativi_FKFIRMA" Association="Self.contratti_assicurativi_FKFIRMA">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="contratti_assicurativi" EntitySet="contratti_assicurativi" />
+          </AssociationSet>
+          <AssociationSet Name="contratti_assicurativi_FKSOTTOSCRIZIONE" Association="Self.contratti_assicurativi_FKSOTTOSCRIZIONE">
+            <End Role="offerte_assicurative" EntitySet="offerte_assicurative" />
+            <End Role="contratti_assicurativi" EntitySet="contratti_assicurativi" />
+          </AssociationSet>
+          <AssociationSet Name="messaggi_FKMITTENTE" Association="Self.messaggi_FKMITTENTE">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="messaggi" EntitySet="messaggi" />
+          </AssociationSet>
+          <AssociationSet Name="messaggi_FKRICEVENTE" Association="Self.messaggi_FKRICEVENTE">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="messaggi" EntitySet="messaggi" />
+          </AssociationSet>
+          <AssociationSet Name="modelli_FKASSEMBLAGGIO" Association="Self.modelli_FKASSEMBLAGGIO">
+            <End Role="nazioni" EntitySet="nazioni" />
+            <End Role="modelli" EntitySet="modelli" />
+          </AssociationSet>
+          <AssociationSet Name="offerte_assicurative_FKCALCOLO" Association="Self.offerte_assicurative_FKCALCOLO">
+            <End Role="modelli" EntitySet="modelli" />
+            <End Role="offerte_assicurative" EntitySet="offerte_assicurative" />
+          </AssociationSet>
+          <AssociationSet Name="multe_FKRECAPITO" Association="Self.multe_FKRECAPITO">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="multe" EntitySet="multe" />
+          </AssociationSet>
+          <AssociationSet Name="stipulazioni_FKUtente" Association="Self.stipulazioni_FKUtente">
+            <End Role="utenti" EntitySet="utenti" />
+            <End Role="stipulazioni" EntitySet="stipulazioni" />
+          </AssociationSet>
+          <AssociationSet Name="garanzie" Association="Self.garanzie">
+            <End Role="offerte_assicurative" EntitySet="offerte_assicurative" />
+            <End Role="servizi" EntitySet="servizi" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TUTTOAUTOModelStoreContainer" CdmEntityContainer="TUTTOAUTOEntities">
+          <EntitySetMapping Name="alimentazioni">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.alimentazioni">
+              <MappingFragment StoreEntitySet="alimentazioni">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="annunci_vendita">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.annunci_vendita">
+              <MappingFragment StoreEntitySet="annunci_vendita">
+                <ScalarProperty Name="TargaAuto" ColumnName="TargaAuto" />
+                <ScalarProperty Name="MailVenditore" ColumnName="MailVenditore" />
+                <ScalarProperty Name="DataAnnuncio" ColumnName="DataAnnuncio" />
+                <ScalarProperty Name="DataVendita" ColumnName="DataVendita" />
+                <ScalarProperty Name="Prezzo" ColumnName="Prezzo" />
+                <ScalarProperty Name="Regione" ColumnName="Regione" />
+                <ScalarProperty Name="MailAcquirente" ColumnName="MailAcquirente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="assicurazioni">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.assicurazioni">
+              <MappingFragment StoreEntitySet="assicurazioni">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="PartitaIVA" ColumnName="PartitaIVA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="auto">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.auto">
+              <MappingFragment StoreEntitySet="auto">
+                <ScalarProperty Name="Targa" ColumnName="Targa" />
+                <ScalarProperty Name="AnnoImmatricolazione" ColumnName="AnnoImmatricolazione" />
+                <ScalarProperty Name="Kilometraggio" ColumnName="Kilometraggio" />
+                <ScalarProperty Name="Potenza" ColumnName="Potenza" />
+                <ScalarProperty Name="Colore" ColumnName="Colore" />
+                <ScalarProperty Name="MailProprietario" ColumnName="MailProprietario" />
+                <ScalarProperty Name="Alimentazione" ColumnName="Alimentazione" />
+                <ScalarProperty Name="CasaProduttrice" ColumnName="CasaProduttrice" />
+                <ScalarProperty Name="NomeModello" ColumnName="NomeModello" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="banche">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.banche">
+              <MappingFragment StoreEntitySet="banche">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Nazione" ColumnName="Nazione" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="case_produttrici">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.case_produttrici">
+              <MappingFragment StoreEntitySet="case_produttrici">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="AnnoFondazione" ColumnName="AnnoFondazione" />
+                <ScalarProperty Name="NomeFondatore" ColumnName="NomeFondatore" />
+                <ScalarProperty Name="LinkSitoWeb" ColumnName="LinkSitoWeb" />
+                <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+                <ScalarProperty Name="Nazione" ColumnName="Nazione" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contratti_assicurativi">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.contratti_assicurativi">
+              <MappingFragment StoreEntitySet="contratti_assicurativi">
+                <ScalarProperty Name="TargaAuto" ColumnName="TargaAuto" />
+                <ScalarProperty Name="DataInizio" ColumnName="DataInizio" />
+                <ScalarProperty Name="DataFine" ColumnName="DataFine" />
+                <ScalarProperty Name="PercentualeSconto" ColumnName="PercentualeSconto" />
+                <ScalarProperty Name="MailUtente" ColumnName="MailUtente" />
+                <ScalarProperty Name="CasaProduttrice" ColumnName="CasaProduttrice" />
+                <ScalarProperty Name="NomeModello" ColumnName="NomeModello" />
+                <ScalarProperty Name="PartitaIVAAssicurazione" ColumnName="PartitaIVAAssicurazione" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="messaggi">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.messaggi">
+              <MappingFragment StoreEntitySet="messaggi">
+                <ScalarProperty Name="MailRicevente" ColumnName="MailRicevente" />
+                <ScalarProperty Name="MailMittente" ColumnName="MailMittente" />
+                <ScalarProperty Name="Codice" ColumnName="Codice" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Testo" ColumnName="Testo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="modelli">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.modelli">
+              <MappingFragment StoreEntitySet="modelli">
+                <ScalarProperty Name="CasaProduttrice" ColumnName="CasaProduttrice" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="AnnoPresentazione" ColumnName="AnnoPresentazione" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Lunghezza" ColumnName="Lunghezza" />
+                <ScalarProperty Name="Larghezza" ColumnName="Larghezza" />
+                <ScalarProperty Name="Peso" ColumnName="Peso" />
+                <ScalarProperty Name="Altezza" ColumnName="Altezza" />
+                <ScalarProperty Name="VotoEuroNCAP" ColumnName="VotoEuroNCAP" />
+                <ScalarProperty Name="NazioneAssemblaggio" ColumnName="NazioneAssemblaggio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="multe">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.multe">
+              <MappingFragment StoreEntitySet="multe">
+                <ScalarProperty Name="NumeroVerbale" ColumnName="NumeroVerbale" />
+                <ScalarProperty Name="DataInfrazione" ColumnName="DataInfrazione" />
+                <ScalarProperty Name="ViaInfrazione" ColumnName="ViaInfrazione" />
+                <ScalarProperty Name="CittàInfrazione" ColumnName="CittàInfrazione" />
+                <ScalarProperty Name="Costo" ColumnName="Costo" />
+                <ScalarProperty Name="DataScadenza" ColumnName="DataScadenza" />
+                <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+                <ScalarProperty Name="MailUtente" ColumnName="MailUtente" />
+                <ScalarProperty Name="TargaAuto" ColumnName="TargaAuto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="nazioni">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.nazioni">
+              <MappingFragment StoreEntitySet="nazioni">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="offerte_assicurative">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.offerte_assicurative">
+              <MappingFragment StoreEntitySet="offerte_assicurative">
+                <ScalarProperty Name="CasaProduttrice" ColumnName="CasaProduttrice" />
+                <ScalarProperty Name="NomeModello" ColumnName="NomeModello" />
+                <ScalarProperty Name="PartitaIVAAssicurazione" ColumnName="PartitaIVAAssicurazione" />
+                <ScalarProperty Name="Premio" ColumnName="Premio" />
+                <ScalarProperty Name="DataScadenza" ColumnName="DataScadenza" />
+                <ScalarProperty Name="Massimale" ColumnName="Massimale" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="proposte_finanziamento">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.proposte_finanziamento">
+              <MappingFragment StoreEntitySet="proposte_finanziamento">
+                <ScalarProperty Name="Codice" ColumnName="Codice" />
+                <ScalarProperty Name="NumeroRate" ColumnName="NumeroRate" />
+                <ScalarProperty Name="ImportoSingolaRata" ColumnName="ImportoSingolaRata" />
+                <ScalarProperty Name="Interessi" ColumnName="Interessi" />
+                <ScalarProperty Name="Banca" ColumnName="Banca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="regioni">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.regioni">
+              <MappingFragment StoreEntitySet="regioni">
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sconti">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.sconti">
+              <MappingFragment StoreEntitySet="sconti">
+                <ScalarProperty Name="PartitaIVAAssicurazione" ColumnName="PartitaIVAAssicurazione" />
+                <ScalarProperty Name="ContrattiPrecedenti" ColumnName="ContrattiPrecedenti" />
+                <ScalarProperty Name="PercentualeSconto" ColumnName="PercentualeSconto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="servizi">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.servizi">
+              <MappingFragment StoreEntitySet="servizi">
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="Descrizione" ColumnName="Descrizione" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="stipulazioni">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.stipulazioni">
+              <MappingFragment StoreEntitySet="stipulazioni">
+                <ScalarProperty Name="PartitaIVAAssicurazione" ColumnName="PartitaIVAAssicurazione" />
+                <ScalarProperty Name="MailUtente" ColumnName="MailUtente" />
+                <ScalarProperty Name="NumeroContrattiTotali" ColumnName="NumeroContrattiTotali" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="utenti">
+            <EntityTypeMapping TypeName="TUTTOAUTOModel.utenti">
+              <MappingFragment StoreEntitySet="utenti">
+                <ScalarProperty Name="Nominativo" ColumnName="Nominativo" />
+                <ScalarProperty Name="IndirizzoMail" ColumnName="IndirizzoMail" />
+                <ScalarProperty Name="PasswordAccesso" ColumnName="PasswordAccesso" />
+                <ScalarProperty Name="Tipo" ColumnName="Tipo" />
+                <ScalarProperty Name="CodiceFiscale" ColumnName="CodiceFiscale" />
+                <ScalarProperty Name="PartitaIVA" ColumnName="PartitaIVA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="garanzie" TypeName="TUTTOAUTOModel.garanzie" StoreEntitySet="garanzie">
+            <EndProperty Name="offerte_assicurative">
+              <ScalarProperty Name="CasaProduttrice" ColumnName="CasaProduttrice" />
+              <ScalarProperty Name="NomeModello" ColumnName="NomeModello" />
+              <ScalarProperty Name="PartitaIVAAssicurazione" ColumnName="PartitaIVAAssicurazione" />
+            </EndProperty>
+            <EndProperty Name="servizi">
+              <ScalarProperty Name="Tipo" ColumnName="TipoServizio" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Nessuno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

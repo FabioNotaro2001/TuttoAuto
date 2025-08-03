@@ -1,0 +1,26 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:BD_TuttoAuto"
+        xmlns:UserControls="clr-namespace:BD_TuttoAuto.UserControls" x:Class="BD_TuttoAuto.MainWindow"
+        mc:Ignorable="d"
+        Title="TuttoAuto" Height="450" Width="629" MinHeight="450" MinWidth="629" Icon="/icon.ico">
+    <Grid Margin="0,0,0,0">
+        <UserControls:LoginPanel x:Name="UscLogin" HorizontalAlignment="Center" Loaded="UscElement_Loaded" Width="448" Visibility="Visible" Height="211" VerticalAlignment="Center"/>
+        <UserControls:HeaderBar x:Name="UscHeaderBar" HorizontalAlignment="Center" VerticalAlignment="Top" Width="600" Loaded="UscElement_Loaded" Visibility="Collapsed"/>
+        <UserControls:HomePanel x:Name="UscHome" HorizontalAlignment="Center" Loaded="UscElement_Loaded" Visibility="Collapsed" Margin="0,95,0,0" Height="203" VerticalAlignment="Top"/>
+        <UserControls:PrivateAreaPanel x:Name="UscPrivateArea" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" Loaded="UscElement_Loaded"/>
+        <UserControls:ProfilePanel x:Name="UscProfile" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" Loaded="UscElement_Loaded"/>
+        <UserControls:ContractsFinesPanel x:Name="UscFineContracts" Visibility="Collapsed" Loaded="UscElement_Loaded" Margin="49,53,49,53"/>
+        <UserControls:SearchPanel x:Name="UscSearch" HorizontalAlignment="Center" VerticalAlignment="Center" Visibility="Collapsed" Loaded="UscElement_Loaded"/>
+        <UserControls:AutoPanel x:Name="UscAutoView" Visibility="Collapsed" Loaded="UscElement_Loaded" Margin="77,22,77,22"/>
+        <UserControls:SearchResultsPanel x:Name="UscSearchResult" Margin="45,84,45,84" Visibility="Collapsed" Loaded="UscElement_Loaded"/>
+        <UserControls:NewContractPanel x:Name="UscNewContract" VerticalAlignment="Center" Visibility="Collapsed" Loaded="UscElement_Loaded" Height="286" Margin="60,0,60,0"/>
+        <UserControls:ChatPanel x:Name="UscChat" Margin="62,92,61,92" Visibility="Collapsed" Loaded="UscElement_Loaded"/>
+        <UserControls:MessagePanel x:Name="UscMessage" Margin="50,96,49,96" Visibility="Collapsed" Loaded="UscElement_Loaded"/>
+        <UserControls:FinanziamentiPanel x:Name="UscFinancing" HorizontalAlignment="Center" Visibility="Collapsed"  Margin="0,53,0,0" VerticalAlignment="Top" Height="359" Width="609" Loaded="UscElement_Loaded"/>
+        <UserControls:CreateAdPanel x:Name="UscAd" HorizontalAlignment="Center" VerticalAlignment="Center"  Visibility="Collapsed" Width="367" Loaded="UscElement_Loaded" Height="254"/>
+    </Grid>
+</Window>

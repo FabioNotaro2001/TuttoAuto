@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="BD_TuttoAuto.UserControls.MessagePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BD_TuttoAuto.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="400">
+    <Grid IsVisibleChanged="Grid_IsVisibleChanged">
+        <Label x:Name="LblChat"  Content="Conversazione con @Utente" Margin="10,8,10,0"  FontSize="24" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="42" VerticalAlignment="Top" />
+        <DataGrid x:Name="DtgChat"  Margin="10,55,10,33" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" IsReadOnly="True"/>
+        <TextBox x:Name="TxtMessage" Margin="10,0,88,8" TextWrapping="Wrap" Height="20" VerticalAlignment="Bottom"/>
+        <Button x:Name="BtnSend" Content="Invia" Margin="0,0,10,8" Click="BtnSend_Click" Height="20" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="73"/>
+    </Grid>
+</UserControl>

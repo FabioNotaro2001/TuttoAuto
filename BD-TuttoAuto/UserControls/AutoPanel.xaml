@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="BD_TuttoAuto.UserControls.AutoPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BD_TuttoAuto.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="400">
+    <Grid IsVisibleChanged="Grid_IsVisibleChanged">
+        <Label Content="Visualizzazione auto" Margin="0,8,0,0"  FontSize="24" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Width="380" Height="50" VerticalAlignment="Top"/>
+        <Label Content="Modello" Margin="10,58,0,0" HorizontalAlignment="Left" Width="54" Height="26" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtModel" Margin="10,89,0,0" TextWrapping="Wrap" IsReadOnly="True" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
+        <Label Content="Casa Produttrice" Margin="10,112,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="97"/>
+        <TextBox x:Name="TxtRegion" Margin="10,197,0,0" TextWrapping="Wrap" IsReadOnly="True" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
+        <Label Content="Regione" Margin="10,166,0,0" HorizontalAlignment="Left" Width="53" Height="26" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtManufacturer" Margin="10,143,0,0" TextWrapping="Wrap" IsReadOnly="True" HorizontalAlignment="Left" Width="120" Height="18" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtFuel" Margin="10,251,0,0" TextWrapping="Wrap" IsReadOnly="True" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
+        <Label Content="Alimentazione" Margin="10,220,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="86"/>
+        <TextBox x:Name="TxtPower" Margin="10,305,0,0" TextWrapping="Wrap" IsReadOnly="True" Height="18" VerticalAlignment="Top" HorizontalAlignment="Left" Width="120"/>
+        <Label Content="Colore" Margin="0,58,155,0" HorizontalAlignment="Right" Width="45" Height="26" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtColor" Margin="0,89,80,0" TextWrapping="Wrap" IsReadOnly="True" HorizontalAlignment="Right" Width="120" Height="18" VerticalAlignment="Top"/>
+        <Label Content="Kilometraggio" HorizontalAlignment="Right" Margin="0,112,115,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtYear" Margin="0,197,80,0" TextWrapping="Wrap" HorizontalAlignment="Right" Width="120" Height="18" VerticalAlignment="Top" IsReadOnly="True"/>
+        <Label Content="Anno Immatricolazione" Margin="0,166,67,0" HorizontalAlignment="Right" Width="133" Height="26" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtKm" Margin="0,143,80,0" TextWrapping="Wrap" IsReadOnly="True" HorizontalAlignment="Right" Width="120" Height="18" VerticalAlignment="Top"/>
+        <TextBox x:Name="TxtPlate" Margin="0,251,80,0" TextWrapping="Wrap" IsReadOnly="True" HorizontalAlignment="Right" Width="120" Height="18" VerticalAlignment="Top"/>
+        <Label Content="Targa" Margin="0,220,162,0" HorizontalAlignment="Right" Width="38" Height="26" VerticalAlignment="Top"/>
+        <Label Content="Potenza" Margin="10,274,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="52"/>
+        <Button x:Name="BtnContact" Margin="0,285,155,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="BtnContact_Click" Height="38" VerticalAlignment="Top" HorizontalAlignment="Right" Width="67">
+            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center">Contatta Proprietario</TextBlock>
+        </Button>
+        <Button x:Name="BtnNewContract" Margin="0,285,10,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="BtnNewContract_Click" HorizontalAlignment="Right" Width="65" Height="38" VerticalAlignment="Top">
+            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center">Nuovo Contratto</TextBlock>
+        </Button>
+        <Button x:Name="BtnInteract" Margin="0,285,80,0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="BtnInteract_Click" HorizontalAlignment="Right" Width="70" Height="38" VerticalAlignment="Top">
+            <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" TextAlignment="Center"><Run Text="Crea Annuncio"/></TextBlock>
+        </Button>
+    </Grid>
+</UserControl>

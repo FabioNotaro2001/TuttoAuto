@@ -1,0 +1,15 @@
+﻿<UserControl x:Class="BD_TuttoAuto.UserControls.HomePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BD_TuttoAuto.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="250" d:DesignWidth="400">
+    <Grid IsVisibleChanged="Grid_IsVisibleChanged">
+        <Label x:Name="LblHome" Content="Benvenuto @Utente" Margin="10,10,0,0" RenderTransformOrigin="0.532,-0.596" FontSize="24" HorizontalContentAlignment="Center" Grid.ColumnSpan="2" Height="64" VerticalAlignment="Top" HorizontalAlignment="Left" Width="380"/>
+        <Button x:Name="BtnSearch" Content="Esegui una ricerca" Margin="10,166,0,0" Click="BtnSearch_Click" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="116"/>
+        <Button x:Name="BtnPrivateArea" Content="La tua area privata" Margin="142,166,0,0" Click="BtnPrivateArea_Click" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="116" Grid.ColumnSpan="2"/>
+        <Button x:Name="BtnFinanziamenti" Content="Finanziamenti" Margin="274,166,0,0" Height="30" VerticalAlignment="Top" HorizontalAlignment="Left" Width="116" Click="BtnFinanziamenti_Click"/>
+    </Grid>
+</UserControl>

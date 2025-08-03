@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="BD_TuttoAuto.UserControls.LoginPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BD_TuttoAuto.UserControls"
+             mc:Ignorable="d"
+             d:DesignWidth="400" Height="218">
+    <Grid IsVisibleChanged="Grid_IsVisibleChanged">
+        <Grid Margin="42,0,42,10" Height="115" VerticalAlignment="Bottom">
+            <Label Content="Mail Utente" Margin="0,15,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="72"/>
+            <Label Content="Password" HorizontalAlignment="Left" Margin="12,36,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="TxtUser" HorizontalAlignment="Left" Margin="77,19,0,0" TextWrapping="Wrap" Width="237" Height="18" VerticalAlignment="Top" Text="Fabio.Notaro@gmail.com"/>
+            <PasswordBox x:Name="PwdUser" Margin="77,42,0,0" HorizontalAlignment="Left" Width="237" Height="18" VerticalAlignment="Top" Password="pino"/>
+            <Button x:Name="BtnLogin" Content="Login" Margin="0,81,0,0" HorizontalAlignment="Center" Width="76" Height="24" VerticalAlignment="Top" Click="BtnLogin_Click"/>
+        </Grid>
+        <Label Content="TuttoAuto" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontSize="30" FontFamily="Lucida Calligraphy"/>
+
+    </Grid>
+</UserControl>

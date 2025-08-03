@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="371ec222e5fd4007a7e5ab0d374c5342" Name="Diagram1">
+        <EntityTypeShape EntityType="TUTTOAUTOModel.alimentazioni" Width="1.5" PointX="3.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.annunci_vendita" Width="1.5" PointX="3" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.assicurazioni" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.auto" Width="1.5" PointX="6" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.banche" Width="1.5" PointX="3.75" PointY="28.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.case_produttrici" Width="1.5" PointX="1.5" PointY="24.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.contratti_assicurativi" Width="1.5" PointX="8.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.messaggi" Width="1.5" PointX="3" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.modelli" Width="1.5" PointX="3.75" PointY="23.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.multe" Width="1.5" PointX="11.25" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.nazioni" Width="1.5" PointX="1.5" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.offerte_assicurative" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.proposte_finanziamento" Width="1.5" PointX="6" PointY="28.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.regioni" Width="1.5" PointX="0.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.sconti" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.servizi" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.stipulazioni" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TUTTOAUTOModel.utenti" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="TUTTOAUTOModel.auto_FKTIPO_MOTORIZZAZIONE" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.annunci_vendita_FKACQUIRENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.annunci_vendita_FKLUOGO" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.annunci_vendita_FKRIFERIMENTO" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.annunci_vendita_FKVENDITORE" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.offerte_assicurative_FKPRESENTAZIONE" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.sconti_FKCONCESSIONE" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.stipulazioni_FKAssicurazione" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.auto_FKPROPRIETA" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.auto_FKTIPOLOGIA" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.contratti_assicurativi_FKCOPERTURA" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.multe_FKRICEZIONE" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.banche_FKNAZIONALITA" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.proposte_finanziamento_FKPROPOSTA" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.case_produttrici_FKFONDAZIONE" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.modelli_FKREALIZZAZIONE" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.contratti_assicurativi_FKFIRMA" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.contratti_assicurativi_FKSOTTOSCRIZIONE" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.messaggi_FKMITTENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.messaggi_FKRICEVENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.modelli_FKASSEMBLAGGIO" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.offerte_assicurative_FKCALCOLO" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.multe_FKRECAPITO" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.stipulazioni_FKUtente" ManuallyRouted="false" />
+        <AssociationConnector Association="TUTTOAUTOModel.garanzie" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
