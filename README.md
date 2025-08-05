@@ -22,17 +22,17 @@ Users can be *private individuals* or *dealerships*, acting as sellers or buyers
 
 ### Key Entities & Relationships
 
-- **Users** (`Utenti`): Identified by email; store personal info, type (`Privato` or `Concessionaria`), plus optional `CodiceFiscale` or `PartitaIVA`.
-- **Cars** (`Auto`): Attributes like `Targa`, `AnnoImmatricolazione`, `Potenza`, owner, fuel type, and model.
-- **Sales Listings** (`Annunci_Vendita`): Refer to a car, seller, (optional) buyer, price, listing date, sale date, and region.
-- **Messages** (`Messaggi`): Between users with sender, recipient, timestamp, and content.
-- **Manufacturers & Models**: `Case_Produttrici` and `Modelli`, including model stats and safety rating (Euro NCAP).
+- **Users** (`Utenti`) -> identified by email; store personal info, type (`Privato` or `Concessionaria`), plus optional `CodiceFiscale` or `PartitaIVA`
+- **Cars** (`Auto`) -> attributes like `Targa`, `AnnoImmatricolazione`, `Potenza`, owner, fuel type and model
+- **Sales Listings** (`Annunci_Vendita`) -> refer to a car, seller, (optional) buyer, price, listing date, sale date and region
+- **Messages** (`Messaggi`) -> between users with sender, recipient, timestamp and content
+- **Manufacturers & Models** -> `Case_Produttrici` and `Modelli`, including model stats and safety rating (Euro NCAP)
 - **Financing Offers** (`Proposte_Finanziamento`): Number of installments, rate, interest, and bank.
-- **Insurance Offers & Contracts**: Offers (`Offerte_Assicurative`) per model and insurance company; user contracts (`Contratti_Assicurativi`) with optional discounts.
-- **Fines** (`Multe`): Violation records tied to a user and car.
-- Supporting lookup tables: **Nations**, **Fuel Types**, **Regions**, **Services**, and **Contract Discounts**.
+- **Insurance Offers & Contracts** -> offers (`Offerte_Assicurative`) per model and insurance company; user contracts (`Contratti_Assicurativi`) with optional discounts.
+- **Fines** (`Multe`) -> violation records tied to a user and car
+- Supporting lookup tables: **Nations**, **Fuel Types**, **Regions**, **Services** and **Contract Discounts**.
 
-Your documentation also defines constraints for data consistency (e.g. sale date logic, non-self-messaging, unique model names per manufacturer, valid numeric ranges) as well as refined conceptual-to-logical translations.
+The documentation also defines constraints for data consistency (e.g. sale date logic, non-self-messaging, unique model names per manufacturer, valid numeric ranges) as well as refined conceptual-to-logical translations.
 
 ---
 
@@ -79,4 +79,4 @@ Initialize lookup tables such as:
 
 TuttoAuto should serve as a complete example of database-driven design for a multifaceted web application, covering entity modeling, relational integrity, business logic implementation, and operational queries.
 
-Feel free to adapt and extend it for more complex features—such as user dashboards, automated discount computation, or interactive search filters.
+Feel free to adapt and extend it for more complex features—such as user dashboards, automated discount computation or interactive search filters.
